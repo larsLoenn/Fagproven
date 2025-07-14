@@ -93,25 +93,4 @@ foreach ($ou in $userOUs) {
                 -ChangePasswordAtLogon $false
         }
     }
-    # -----------------------------
-# Legger testbrukere i passende grupper basert på OU
-# -----------------------------
-$groupAssignments = @{
-    "AnsatteTest"  = "employees"
-    "ITavdTest"    = "IT"
-    "eksterneTest" = "external"
-}
-
-foreach ($username in $groupAssignments.Keys) {
-    $group = $groupAssignments[$username]
-
-    try {
-        $userExists = Get-ADUser -Identity $username -ErrorAction Stop
-        $groupExists = Get-ADGroup -Identity $group -ErrorAction Stop
-
-        Add-ADGroupMember -Identity $group -Members $username
-        Write-Host "✅ La til ${username} i gruppen ${group}"
-    } catch {
-        Write-Host "❌ Feil ved å legge til ${username} i ${group}: $($_.Exception.Message)"
-    }
 }
