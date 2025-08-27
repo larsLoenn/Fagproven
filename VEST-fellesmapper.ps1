@@ -1,7 +1,7 @@
 # -----------------------------
 # DEL 1 – OPPRETT MAPPER OG DEL DEM
 # -----------------------------
-$basePath = "C:\Data2$"  # Skjult hovedmappe
+$basePath = "C:\Data2"  # Skjult hovedmappe
 $adminGroup = "VEST\Domain Admins"
 $groupNames = @("employees", "external", "IT")
 
