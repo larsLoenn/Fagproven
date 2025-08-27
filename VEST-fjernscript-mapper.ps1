@@ -1,7 +1,7 @@
 # -----------------------------
 # DEL 4 – FJERNINGSSCRIPT
 # -----------------------------
-$basePath = "C:\Data2$"
+$basePath = "C:\Data"
 $groupNames = @("employees", "external", "IT")
 
 foreach ($group in $groupNames) {
