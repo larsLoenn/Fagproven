@@ -1,9 +1,9 @@
 # -----------------------------
 # DEL 1 – OPPRETT MAPPER OG DEL DEM
 # -----------------------------
-$basePath = "C:\Data2"  # Skjult hovedmappe
-$adminGroup = "VEST\Domain Admins"
-$groupNames = @("employees", "external", "IT")
+$basePath = "C:\Data"  # Skjult hovedmappe
+$adminGroup = "SJOBRIS\Domain Admins"
+$groupNames = @("employees", "external","oekonomi", "IT")
 
 # Sørg for at base-mappe finnes
 if (-not (Test-Path -Path $basePath)) {
@@ -22,7 +22,7 @@ foreach ($group in $groupNames) {
     }
 
     if (-not (Get-SmbShare -Name $shareName -ErrorAction SilentlyContinue)) {
-        New-SmbShare -Name $shareName -Path $folderPath -FullAccess "VEST\Domain Admins" -ChangeAccess $group
+        New-SmbShare -Name $shareName -Path $folderPath -FullAccess "SJOBRIS\Domain Admins" -ChangeAccess $group
         Write-Host "📡 Created SMB share: $shareName"
     } else {
         Write-Host "⚠️ Share already exists: $shareName"
