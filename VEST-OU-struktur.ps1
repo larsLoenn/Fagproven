@@ -1,10 +1,10 @@
 # Definerer $RootOU
-$rootOU = "OU=Vestkommune,DC=vestkommune,DC=ad"
+$rootOU = "OU=Sjobris,DC=sjobris,DC=ad"
 
-# Lager Root OU / Vestkommune
-New-ADOrganizationalUnit -Name "vestkommune" -Path "DC=vestkommune,DC=ad"
+# Lager Root OU / sjobris
+New-ADOrganizationalUnit -Name "Sjobris" -Path "DC=sjobris,DC=ad"
 
-# Lager under-OU-er under Root OU / vestkommune
+# Lager under-OU-er under Root OU / sjobris
 New-ADOrganizationalUnit -Name "Users" -Path $rootOU
 New-ADOrganizationalUnit -Name "Computers" -Path $rootOU
 New-ADOrganizationalUnit -Name "Groups" -Path $rootOU
@@ -12,7 +12,7 @@ New-ADOrganizationalUnit -Name "Groups" -Path $rootOU
 # -----------------------------
 # Lager standardgrupper
 # -----------------------------
-$groupsOU = "OU=Groups,$rootOU"     # peker på vestkommune\Groups
+$groupsOU = "OU=Groups,$rootOU"     # peker på sjobris\Groups
 
 # Eksterne brukere
 New-ADGroup `
@@ -77,7 +77,7 @@ foreach ($ou in $userOUs) {
     if ($ou -match "OU=([^,]+),") {
         $ouName = $matches[1]
         $username = "${ouName}Test"
-        $userPrincipalName = "$username@vestkommune.site"
+        $userPrincipalName = "$username@skjoldal.site"
 
         if (-not (Get-ADUser -Filter { SamAccountName -eq $username } -ErrorAction SilentlyContinue)) {
             New-ADUser `
