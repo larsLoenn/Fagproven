@@ -3,7 +3,7 @@
 # -----------------------------
 $basePath = "C:\Data"  # Skjult hovedmappe
 $adminGroup = "SJOBRIS\Domain Admins"
-$groupNames = @("ansatt", "external","oekonomi", "IT")
+$groupNames = @("oekonomi", "IT")
 
 # Sørg for at base-mappe finnes
 if (-not (Test-Path -Path $basePath)) {
