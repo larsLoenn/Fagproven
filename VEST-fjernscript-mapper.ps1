@@ -2,7 +2,7 @@
 # DEL 4 – FJERNINGSSCRIPT
 # -----------------------------
 $basePath = "C:\Data"
-$groupNames = @("employees", "external", "IT")
+$groupNames = @("employees", "external","oekonomi", "IT")
 
 foreach ($group in $groupNames) {
     $folderPath = Join-Path -Path $basePath -ChildPath $group
