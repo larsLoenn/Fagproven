@@ -25,12 +25,19 @@ New-ADGroup `
 
 # Ansatte
 New-ADGroup `
-    -Name "employees" `
-    -SamAccountName "employees" `
+    -Name "ansatte" `
+    -SamAccountName "ansatte" `
     -GroupCategory Security `
     -GroupScope Global `
     -Path $groupsOU `
     -Description "Gruppe for alle ansatte"
+New-ADGroup `
+    -Name "oekonomi" `
+    -SamAccountName "oekonomi" `
+    -GroupCategory Security `
+    -GroupScope Global `
+    -Path $groupsOU `
+    -Description "Gruppe for alle Økonomi"
 
     New-ADGroup `
     -Name "It" `
@@ -50,6 +57,7 @@ redircmp "OU=Computers,$rootOU"
 New-ADOrganizationalUnit -Name "Ansatte" -Path "OU=Users,$rootOU"
 New-ADOrganizationalUnit -Name "ITavd" -Path "OU=Users,$rootOU"
 New-ADOrganizationalUnit -Name "eksterne" -Path "OU=Users,$rootOU"
+New-ADOrganizationalUnit -Name "oekonomi" -Path "OU=Users,$rootOU"
 
 # Definerer Admin OU og under-OUer
 $adminOU = "OU=Admin,$rootOU"
@@ -69,6 +77,7 @@ $userOUs = @(
     "OU=Ansatte,OU=Users,$rootOU",
     "OU=ITavd,OU=Users,$rootOU",
     "OU=eksterne,OU=Users,$rootOU",
+    "OU=oekonomi,OU=Users,$rootOU"
     "OU=users,$adminOU"
 )
 
