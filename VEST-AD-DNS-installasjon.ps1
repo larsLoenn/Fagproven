@@ -2,13 +2,13 @@
 Install-WindowsFeature -Name AD-Domain-Services, DNS -IncludeManagementTools
 # Import the AD DS module 
 Import-Module ADDSDeployment
-# Install a new forest "Vestkommune" 
+# Install a new forest "sjobris" 
 Install-ADDSForest `
 -CreateDnsDelegation:$false `
 -DatabasePath "C:\Windows\NTDS" `
 -DomainMode "WinThreshold" `
--DomainName "vestkommune.ad" `
--DomainNetbiosName "VEST" `
+-DomainName "sjobris.ad" `
+-DomainNetbiosName "SJOBRIS" `
 -ForestMode "WinThreshold" `
 -InstallDns:$true `
 -LogPath "C:\Windows\NTDS" `
@@ -16,16 +16,12 @@ Install-ADDSForest `
 -SysvolPath "C:\Windows\SYSVOL" `
 -Force:$true
 
+
 # DC02 replikering av DC01
 
 #
 # Windows PowerShell script for AD DS Deployment
 #
-
-#
-# Windows PowerShell script for AD DS Deployment
-#
-
 Import-Module ADDSDeployment
 Install-ADDSDomainController `
 -NoGlobalCatalog:$false `
@@ -33,11 +29,11 @@ Install-ADDSDomainController `
 -Credential (Get-Credential) `
 -CriticalReplicationOnly:$false `
 -DatabasePath "C:\Windows\NTDS" `
--DomainName "vestkommune.ad" `
+-DomainName "sjobris.ad" `
 -InstallDns:$true `
 -LogPath "C:\Windows\NTDS" `
 -NoRebootOnCompletion:$false `
--ReplicationSourceDC "DC01.vestkommune.ad" `
+-ReplicationSourceDC "DC01.sjobris.ad" `
 -SiteName "Default-First-Site-Name" `
 -SysvolPath "C:\Windows\SYSVOL" `
 -Force:$true
