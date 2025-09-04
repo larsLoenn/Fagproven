@@ -22,6 +22,9 @@ Install-ADDSForest `
 #
 # Windows PowerShell script for AD DS Deployment
 #
+# Install AD DS and DNS Server roles 
+Install-WindowsFeature -Name AD-Domain-Services, DNS -IncludeManagementTools
+# Import the AD DS module 
 Import-Module ADDSDeployment
 Install-ADDSDomainController `
 -NoGlobalCatalog:$false `
